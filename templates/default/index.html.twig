@@ -1,10 +1,14 @@
-{# ./templates/default/index.html.twig #}
-
 {% extends 'base.html.twig' %}
 
- {% block title %} Symfony React Project {% endblock %}
+{% block title %}Hello Symfony + Svelte!{% endblock %}
 
- {% block body %}
-     <div id="root"></div>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 
- {% endblock %}
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+{% endblock %}
+
+{% block body %}
+{% endblock %}

@@ -1,3 +1,6 @@
+import App from './App.svelte';
+import '../css/app.css';
+
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -10,10 +13,11 @@
 
 console.log('Hello Webpack Encore! Edit me in assets/app.js');
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import '../css/app.css';
-import Home from './components/Home';
+const app = new App({
+    target: document.body,
+    props: {
+        answer: 42
+    }
+});
 
-ReactDOM.render(<Router><Home /></Router>, document.getElementById('root'));
+export default app;
