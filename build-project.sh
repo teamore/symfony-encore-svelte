@@ -19,10 +19,10 @@ yarn add font-awesome --dev
 yarn add sass-loader@^7.0.1 --dev
 
 ## sass is supposed to deliver better results than node-sass
-yarn add node-sass@^4.1.1 --dev
+# yarn add node-sass@^4.1.1 --dev
 # however, yarn complains without node-sass
 # so at a later stage, try to use sass instead of node-sass
-# yarn add sass --dev
+yarn add sass --dev
 
 yarn add @babel/core@^7.0
 yarn add @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime @babel/plugin-syntax-dynamic-import
