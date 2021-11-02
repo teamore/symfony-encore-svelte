@@ -11,7 +11,6 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update
 sudo apt-get install yarn
 yarn install
-yarn encore dev
 
 yarn add jquery --dev
 yarn add bootstrap
@@ -26,11 +25,16 @@ yarn add node-sass@^4.1.1 --dev
 # yarn add sass --dev
 
 yarn add @babel/core@^7.0
-yarn add @babel/preset-react --dev
-yarn add react-router-dom
-yarn add --dev react react-dom prop-types axios
 yarn add @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime @babel/plugin-syntax-dynamic-import
 yarn add babel-loader @babel/preset-env
+
+# add webpack dependencies
+yarn add webpack webpack-cli webpack-dev-server css-loader mini-css-extract-plugin file-loader dotenv-webpack --save-dev
+
+yarn add html-webpack-plugin --save-dev
+
+# add svelte support
+yarn add --save-dev svelte-loader svelte
 
 yarn add core-js@2
 
@@ -40,4 +44,5 @@ composer update
 composer install
 
 yarn build
+yarn encore dev
 #composer create-project symfony/website-skeleton .

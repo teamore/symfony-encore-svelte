@@ -1,79 +1,67 @@
-var Encore = require('@symfony/webpack-encore');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
-// the webpack.config.js is only parsed once before evoking `yarn watch`
-// so remember to restart yarn watch if you apply changes to this file
-
-Encore
-    // directory where compiled assets will be stored
-    .setOutputPath('public/build/')
-    // public path used by the web server to access the output path
-    .setPublicPath('/build')
-    .enableReactPreset()
-    // only needed for CDN's or sub-directory deploy
-    //.setManifestKeyPrefix('build/')
-
-    /*
-     * ENTRY CONFIG
-     *
-     * Add 1 entry for each "page" of your app
-     * (including one that's included on every page - e.g. "app")
-     *
-     * Each entry will result in one JavaScript file (e.g. app.js)
-     * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
-     */
-    .addEntry('app', './assets/js/app.js')
-    //.addEntry('page1', './assets/js/page1.js')
-    //.addEntry('page2', './assets/js/page2.js')
-
-    // Webpack "splits" your files into smaller pieces
-    .splitEntryChunks()
-
-    // will require an extra script tag for runtime.js
-    // but, you probably want this, unless you're building a single-page app
-    .enableSingleRuntimeChunk()
-//      .disableSingleRuntimeChunk()
-
-    /*
-     * FEATURE CONFIG
-     *
-     * Enable & configure other features below. For a full
-     * list of features, see:
-     * https://symfony.com/doc/current/frontend.html#adding-more-features
-     */
-    .cleanupOutputBeforeBuild()
-    .enableBuildNotifications()
-    .enableSourceMaps(!Encore.isProduction())
-    // enables hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
-
-    // enables Sass/SCSS support
-    .enableSassLoader()
-
-    // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
-
-    // enables @babel/preset-env polyfills
-    /*
-    .configureBabel(() => {}, {
-        useBuiltIns: 'usage',
-        corejs: 3
-    })
-    */
-    .copyFiles({
-        from: './assets/images',
-        to: 'images/[path][name].[hash:8].[ext]'
-    })
-
-    // uncomment if you're having problems with a jQuery plugin
-    //.autoProvidejQuery()
-
-    // uncomment if you use API Platform Admin (composer req api-admin)
-    //.enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
-;
-
-
-module.exports = Encore.getWebpackConfig();
-//const config = Encore.getWebpackConfig();
-//config.optimization.splitChunks.minSize = 20000;
-//module.exports = config;
+module.exports = {
+    // This says to webpack that we are in development mode and write the code in webpack file in different way
+    mode: 'development',
+    //Our index file
+    entry: './assets/js/index.js',
+    //Where we put the production code
+    output: {
+        path: path.resolve(__dirname, 'public/build/'),
+        filename: 'app.js',
+        publicPath: '/',
+    },
+    module: {
+        rules: [
+            //Allows use of modern javascript
+            {
+                test: /\.js?$/,
+                exclude: /node_modules/, //don't test node_modules folder
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+            //Allows use of svelte
+            {
+                test: /\.svelte$/,
+                use: {
+                    loader: 'svelte-loader',
+                },
+            },
+            //Allows use of CSS
+            {
+                test: /\.css$/,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            //Allows use of images
+            {
+                test: /\.(jpg|jpeg|png|svg)$/,
+                use: 'file-loader',
+            },
+        ],
+    },
+    //this is what enables users to leave off the extension when importing
+    resolve: {
+        extensions: ['.mjs', '.js', '.svelte'],
+    },
+    plugins: [
+        //Allows to create an index.html in our build folder
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, 'public/index.html'),
+        }),
+        //This gets all our css and put in a unique file
+        new MiniCssExtractPlugin(),
+        //take our environment variable in .env file
+        //And it does a text replace in the resulting bundle for any instances of process.env.
+        new Dotenv(),
+    ],
+    ////Config for webpack-dev-server module
+    devServer: {
+        historyApiFallback: true,
+        contentBase: path.resolve(__dirname, 'public/build'),
+        hot: true,
+    },
+};
