@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+
+# make sure this script is only run once
+LOCKFILE=./build.lock
+if test -f "$LOCKFILE"; then
+  exit 0
+fi
+
+composer update
+composer install --prefer-dist -vvv --profile
+
 sudo apt-get update
 sudo apt-get install npm
 npm install -g n
@@ -40,9 +50,9 @@ yarn add core-js@2
 
 yarn add dropzone sortablejs --dev
 
-composer update
-composer install
-
+yarn install
 yarn build
 yarn encore dev
 #composer create-project symfony/website-skeleton .
+
+touch "$LOCKFILE"
