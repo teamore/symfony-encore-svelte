@@ -1,3 +1,68 @@
-body{
-    background-color: #EEEEEE
+body {
+    background-color: #EEEEEE;
+    font-family: 'Calibri', sans-serif;
+}
+a, a:visited, a:link {
+    color: #0F83E8;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+header, footer, div.content {
+    padding: 1em;
+}
+
+.login-text label, .input-text label {
+    width: 8em;
+    display: inline-block;
+}
+form input {
+    min-height: 2em;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-color: lightblue;
+    border-style: solid;
+    border-radius: 0.4em;
+}
+form input[type=submit] {
+    transition-duration: 0.2s;
+    background: lightblue;
+    border-width: 0;
+    min-height: 4em;
+    min-width: 22em;
+    margin-top: 1em;
+    color: dodgerblue;
+}
+form input[type=submit]:hover {
+    background: dodgerblue;
+    color: lightblue;
+    cursor: pointer;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    min-height: 2em;
+    background: #001b44;
+    color: #cdecff;
+}
+
+footer {
+    height: 1em;
+    background: #001b44;
+    color: #cdecff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
 }

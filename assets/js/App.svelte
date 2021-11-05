@@ -1,15 +1,27 @@
-<h1>Symfony + Svelte = &lt;3</h1>
-
 <script>
-    let name = 'world';
-    let envVariable = process.env.foo;
-</script>
-
-<style>
-    h1{
-        color: tomato
+    import Application from "./classes/Application";
+    let application = new Application(true);
+    let QUERY = document.QUERY_PARAMETERS;
+    if (QUERY?.location) {
+        application.redirectTo(QUERY.location);
     }
-</style>
-
-<h1>Hello {name}!</h1>
-<p>env variable: {envVariable}</p>
+    if (QUERY?.token) {
+        application.network.setBearerToken(QUERY.token);
+    }
+    if (QUERY?.user) {
+        application.currentUser = QUERY.user;
+    }
+    let currentPage = application.getCurrentPage();
+    let pageChangeHandler = function(newPage) {
+        currentPage = newPage;
+    }
+    application.pageChangeHandler = pageChangeHandler;
+</script>
+<div class="content">
+    {#await import('./'+currentPage.charAt(0).toUpperCase()+currentPage.slice(1)+'.svelte') then currentPageComponent}
+        <svelte:component
+                this={currentPageComponent.default}
+                application={application}
+        />
+    {/await}
+</div>
