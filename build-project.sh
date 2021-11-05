@@ -43,7 +43,7 @@ sudo apt-get --assume-yes install yarn
 # yarn add html-webpack-plugin --save-dev
 
 # add svelte support
-yarn add --save-dev svelte-loader svelte
+# yarn add --save-dev svelte-loader svelte
 
 # yarn add core-js@2
 
