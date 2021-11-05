@@ -28,6 +28,17 @@ In order to build the javascript and css files necessary to view the application
 yarn encore dev --watch
 ```
 
+# ONLY FOR DEVELOPMENT
+This repository serves as an application template intended to be used in a development environment only.
+
+Before releasing any app derived from this repository - especially in any publicly accessible productive environment -, 
+security concerns have to be taken into account which have not been addressed for simplicity reasons.
+
+Therefore, the author is not responsible for any security breaches, hardware or software defects, data leaks or any other 
+negative circumstances emerging from the usage of this application template.
+
+By using this template for your software projects, you agree to these terms.
+
 # symfony-encore-react
 This repository has been inspired by the work of these great developers:
 
