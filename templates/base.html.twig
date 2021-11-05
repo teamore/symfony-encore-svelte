@@ -4,14 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Calibri">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
+{% block header %}
+<header>
+    <h1>Polypus Social Media Hub</h1>
+</header>
+{% endblock %}
 <body>
-{% block body %}{% endblock %}
-{% block javascripts %}
+<div class="content">
+{% block application %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 </body>
+{% block footer %}
+<footer>
+    Powered by <a href="https://iovano.de">iovano</a>, PHP 8/Symfony 5 & Svelte 3
+</footer>
+{% endblock %}
 </html>
