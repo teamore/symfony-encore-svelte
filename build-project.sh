@@ -31,7 +31,7 @@ sudo apt-get --assume-yes install yarn
 # yarn add node-sass@^4.1.1 --dev
 # however, yarn complains without node-sass
 # so at a later stage, try to use sass instead of node-sass
-yarn add sass --dev
+# yarn add sass --dev
 
 # yarn add @babel/core@^7.0
 # yarn add @babel/plugin-proposal-class-properties @babel/plugin-transform-runtime @babel/plugin-syntax-dynamic-import
@@ -43,7 +43,7 @@ yarn add sass --dev
 # yarn add html-webpack-plugin --save-dev
 
 # add svelte support
-yarn add --save-dev svelte-loader svelte
+# yarn add --save-dev svelte-loader svelte
 
 # yarn add core-js@2
 

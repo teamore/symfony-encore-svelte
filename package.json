@@ -11,10 +11,10 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "devDependencies": {
-    },
+    "devDependencies": {},
     "dependencies": {
         "@symfony/webpack-encore": "*",
+        "axios": "^0.24.0",
         "css-loader": "*",
         "svelte": "*",
         "svelte-loader": "*"
