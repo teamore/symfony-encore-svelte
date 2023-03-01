@@ -1,5 +1,5 @@
 {
-    "name": "iovano/polypus",
+    "name": "iovano/kodal",
     "description": "Symfony Skeleton Application",
     "type": "project",
     "license": "proprietary",
@@ -19,7 +19,6 @@
         "jms/serializer-bundle": "*",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.3",
-        "sensio/framework-extra-bundle": "*",
         "stof/doctrine-extensions-bundle": "*",
         "symfony/apache-pack": "*",
         "symfony/asset": "^5.3",
@@ -32,10 +31,9 @@
         "symfony/property-access": "^5.3",
         "symfony/property-info": "^5.3",
         "symfony/proxy-manager-bridge": "^5.3",
-        "symfony/security": "*",
         "symfony/security-bundle": "^5.3",
         "symfony/serializer": "^5.3",
-        "symfony/swiftmailer-bundle": "*",
+        "symfony/mailer": "*",
         "symfony/twig-bundle": "^5.3",
         "symfony/validator": "^5.3",
         "symfony/var-dumper": "*",
@@ -43,6 +41,9 @@
         "symfony/yaml": "*"
     },
     "config": {
+        "allow-plugins": {
+            "symfony/flex": true
+        },
         "preferred-install": {
             "*": "dist"
         },
