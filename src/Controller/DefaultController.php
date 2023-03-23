@@ -16,7 +16,7 @@ use Symfony\Component\VarDumper\VarDumper;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/{location}", name="home", defaults={"location": ""})
+     * @Route("/{location}", name="fe_routing", requirements={"location"="^(?!/*auth|api|upload).+"}, priority=-1)
      */
     public function index(Request $request, TokenStorageInterface $tokenStorage, JwtAuthenticator $authenticator, SerializerInterface $serializer, string $location)
     {
