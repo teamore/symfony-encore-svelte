@@ -3,12 +3,13 @@ import Network from "./Network";
 
 class Application {
     network = undefined;
-    currentPage = "Login";
+    currentPage = undefined;
     currentUser = undefined;
     debugMode = false;
-    constructor(debugMode = false) {
+    constructor(defaultPage = 'Login', debugMode = false) {
         this.network = new Network();
         this.setDebugMode(debugMode);
+        this.currentPage = defaultPage;
         this.network.setResponseCallback((response) => this.networkResponseHandler(response));
     }
     setDebugMode(debugMode) {
